@@ -283,20 +283,22 @@ leerArchivo().then(nombrePersonaje => {
     console.log(dicNombres);
 });
 const dictFilms = new Dictionary();
-let films = 0;
 
-leerArchivo().then(nombrePersonaje => {
-    nombrePersonaje.bdd.map(valor => {
 
-        if(dictFilms.has(valor.nombre)){
+leerArchivo().then(valor => {
+    valor.bdd.forEach(valor => {
+        const nombre = valor.name
 
-            films = films +1
-            dictFilms.set(valor.nombre, films )
+        const films = valor.films.length
+        console.log(nombre ,valor.films.length)
+
+        if(dictFilms.has(nombre)){
+
+
+            dictFilms.set(nombre, films )
 
         }
-        else{
-            dictFilms.set(valor.nombre, 0)
-        }
+
 
 
     });
